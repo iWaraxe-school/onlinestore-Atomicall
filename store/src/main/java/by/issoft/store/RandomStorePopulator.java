@@ -1,2 +1,5 @@
-package by.issoft.store;public class RandomStorePopulator {
+package by.issoft.store;
+
+public class RandomStorePopulator {
+//Faker
 }

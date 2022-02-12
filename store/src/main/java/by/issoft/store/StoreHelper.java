@@ -1,2 +1,4 @@
-package by.issoft.store;public class StoreHelper {
+package by.issoft.store;
+
+public class StoreHelper {
 }

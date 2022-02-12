@@ -1,2 +1,4 @@
-module $MODULE_NAME$ {
+module consoleApp {
+    requires domain;
+    requires store;
 }

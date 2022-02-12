@@ -1,2 +1,4 @@
-module $MODULE_NAME$ {
+module store {
+    requires domain;
+    exports by.issoft.store;
 }
