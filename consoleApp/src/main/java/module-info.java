@@ -3,4 +3,5 @@ module consoleApp {
     requires store;
     requires javafaker; //#include?
     requires java.sql; //wt
+    requires org.reflections;
 }
