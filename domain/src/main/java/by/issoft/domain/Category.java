@@ -4,18 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Category {
-    private final String name;
-
+    private final String categoryName;
+    private List<Product> productList = new ArrayList<>(); // LinkedList?
     public List<Product> getProductList() {
         return productList;
     }
 
-    private List<Product> productList = new ArrayList<>(); // ?
-
-    public Category(String name) {
-        this.name = name;
+    public Category(String categoryName) {
+        this.categoryName = categoryName;
     }
-    public String getName() {
-        return name;
+    public String getCategoryName() {
+        return categoryName;
     }
 }

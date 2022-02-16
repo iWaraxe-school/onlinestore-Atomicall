@@ -1,7 +1,8 @@
 package by.issoft.domain;
 
 public class Product {
-    private final String name;
+    private final String name; // не лучше ли отнаследовавть product
+    // в конкретный продукт со своими критериями?
     private float rate;
     private float price;
 
@@ -10,6 +11,9 @@ public class Product {
         this.rate = rate;
         this.price = price;
     }
+    public Product(String name){
+        this.name = name;
+    };
 
     public String getName() {
         return name;
