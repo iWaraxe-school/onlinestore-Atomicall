@@ -21,7 +21,6 @@ public class RandomStorePopulator {
         int randomAmountOfProducts = (int)Math.floor(Math.random()*(maxRandVal-minRandVal+1)+minRandVal);
         Product p;
         List<Product> productList = c.getProductList();
-
         for (int i = 0; i < randomAmountOfProducts; i++){
             p= new Product(c.getCategoryName() + "_" + faker.commerce().productName()+"_" +i);
             //p.setPrice(Float.parseFloat(faker.commerce().price(1, 100)));
