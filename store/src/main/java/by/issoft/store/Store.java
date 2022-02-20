@@ -1,25 +1,38 @@
 package by.issoft.store;
 import by.issoft.domain.Category;
-import by.issoft.domain.categories.BikeCategory;
-import by.issoft.domain.categories.MilkCategory;
-import by.issoft.domain.categories.PhoneCategory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class Store {
 private List<Category> categoryList = new ArrayList<>();
-
     public List<Category> getCategoryList() {
         return categoryList;
     }
     public void init(){
-        categoryList.add(new BikeCategory());
-        categoryList.add(new MilkCategory());
-        categoryList.add(new PhoneCategory());
+        ReflectionsService reflectionsService = ReflectionsService.getService();
+        for (Class<? extends Category> c: reflectionsService.getSubClasses(Category.class)){
+
+
+            //Casting??
+           /* Class<? extends Category> instanceOf1 = reflectionsService.createInstanceOf1(c);
+            categoryList.add ((Category) instanceOf1);*/
+
+            //works
+            /*try {
+                categoryList.add(((Category)Class.forName(c.getName()).getConstructor().newInstance()));
+            }
+            catch (Exception e){};*/
+
+            //works
+            try {
+                categoryList.add(c.getConstructor().newInstance());
+            }
+            catch (Exception e){};
+        }
     }
+
     public void populateCategories(){
         if (categoryList.isEmpty()) return;
         for (Category c: categoryList) {
