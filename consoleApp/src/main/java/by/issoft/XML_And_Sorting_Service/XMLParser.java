@@ -1,7 +1,7 @@
-package by.issoft.XML__And_Sorting_Service;
+package by.issoft.XML_And_Sorting_Service;
 
-import by.issoft.XML__And_Sorting_Service.Enums.FieldTypes;
-import by.issoft.XML__And_Sorting_Service.Enums.SortingTypes;
+import by.issoft.XML_And_Sorting_Service.Enums.FieldTypes;
+import by.issoft.XML_And_Sorting_Service.Enums.SortingTypes;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -22,7 +22,7 @@ import java.util.Map;
 
 public class XMLParser {
     private Document targetConfigXML;
-    private Map<FieldTypes, SortingTypes> sortOrders = new LinkedHashMap<FieldTypes,SortingTypes>();
+    private Map<FieldTypes, SortingTypes> sortingOrders = new LinkedHashMap<FieldTypes,SortingTypes>();
 
     public XMLParser(String path) throws InvalidPathException, NullPointerException,
             IOException, ParserConfigurationException, SAXException {
@@ -42,17 +42,19 @@ public class XMLParser {
                 parse(configFile);
     }
 
-    public void parseConfig() {
+    public LinkedHashMap parseConfig() {
         Element rootElement = targetConfigXML.getDocumentElement();
         NodeList fieldsToSort = rootElement.getChildNodes();
         for (int i = 0; i < fieldsToSort.getLength(); i++) {
             Node field = fieldsToSort.item(i);
             if (field.getNodeType() == Node.ELEMENT_NODE) {
-                sortOrders.put(parseFieldType(field.getNodeName()), parseSortingType(field.getTextContent()));
+                sortingOrders.put(parseFieldType(field.getNodeName()), parseSortingType(field.getTextContent()));
             }
         }
-        sortOrders.forEach((key, val)->{System.out.println(key + " " + val);});
+        sortingOrders.forEach((key, val)->{System.out.println(key + " " + val);});
+        return (LinkedHashMap) sortingOrders;
     }
+
 
     private FieldTypes parseFieldType(String s){
         FieldTypes type =

@@ -1,11 +1,15 @@
 package by.issoft.consoleApp;
+import by.issoft.XML_And_Sorting_Service.Sorter;
 import by.issoft.domain.Product;
 import by.issoft.store.ReflectionsService;
 import by.issoft.store.Store;
 import by.issoft.domain.Category;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -36,9 +40,47 @@ public class UserInteractService {
 
     }
 
-    static StoreCommands readCommand(){
+    /*private static StoreCommands parseCommand(String s){
+        StoreCommands command = switch (s){
+            case "top" -> StoreCommands.TOP;
+            case "sort"->StoreCommands.SORT;
+            case "quit"->StoreCommands.QUIT;
+            default -> StoreCommands.DEFAULT;
+        };
+        return command;
+    }*/
+    static void readUserCommands(Store store){
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String userInput;
+        try {
+            while (true) {
+                userInput = reader.readLine();
+                switch (userInput) {
+                    case "top":{
 
-        return null;
+                        break;
+                    }
+                    case "sort":{
+                        ArrayList<Product> sorted = Sorter.sortByPrice(store.getCategoryList());
+                        for (int i = 0; i < 5 && i < sorted.size(); i++) {
+                            System.out.println(sorted.get(i)); // todo красивый StringBuilder
+                        }
+                        break;
+                    }
+                    case "quit":{
+                        System.out.println("Leaving...");
+                        System.exit(0); //
+                        break;
+                    }
+                    default:{
+                        System.out.println("Unknown command");
+                    }
+                }
+            }
+        }
+    catch (Exception e){};
+
+
     }
 
 }
