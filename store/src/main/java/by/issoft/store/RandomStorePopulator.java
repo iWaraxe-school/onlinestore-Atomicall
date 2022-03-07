@@ -12,7 +12,6 @@ public class RandomStorePopulator {
 
     public RandomStorePopulator() {
         System.out.println("Rand store populator created");
-
     }
     public static void populateCategory(Category c){
         int maxRandVal = 10;
@@ -22,15 +21,15 @@ public class RandomStorePopulator {
         Product p;
         List<Product> productList = c.getProductList();
         for (int i = 0; i < randomAmountOfProducts; i++){
-            p= new Product(c.getCategoryName() + "_" + faker.commerce().productName()+"_" +i);
-            //p.setPrice(Float.parseFloat(faker.commerce().price(1, 100)));
-            //.NumberFormatException: For input string: "19,49"
-            // p.setPrice(Float.valueOf(faker.commerce().price(1, 100)));
+            //p= new Product(c.getCategoryName() + "_" + faker.commerce().productName()+"_" +i);
+            p= new Product(String.valueOf(i));
             try {
-                p.setPrice(nf.parse(faker.commerce().price(1, 100)).floatValue());
+                //p.setPrice(nf.parse(faker.commerce().price(1, 100)).floatValue());
+               p.setPrice((float) 2*i);
             }
             catch (Exception e){};
             p.setRate((float)faker.number().randomDouble(2, 0, 5));
+            //p.setRate((float)(2.43));
             productList.add(p);
         }
     }

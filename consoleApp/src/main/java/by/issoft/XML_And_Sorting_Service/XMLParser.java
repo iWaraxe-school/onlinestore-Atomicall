@@ -1,5 +1,6 @@
 package by.issoft.XML_And_Sorting_Service;
 
+
 import by.issoft.XML_And_Sorting_Service.Enums.FieldTypes;
 import by.issoft.XML_And_Sorting_Service.Enums.SortingTypes;
 import org.w3c.dom.Document;
@@ -55,24 +56,41 @@ public class XMLParser {
         return (LinkedHashMap) sortingOrders;
     }
 
-
     private FieldTypes parseFieldType(String s){
-        FieldTypes type =
+        // java сломалась после применения автонастройки идеи
+        // java: switch rules are not supported in -source 11
+        //  (use -source 14 or higher to enable switch rules)
+        // хотя ВЕЗДЕ стоит 16
+       /* FieldTypes type =
                 switch (s){
                     case "name" -> FieldTypes.NAME;
                     case "price" -> FieldTypes.PRICE;
                     case "rate" -> FieldTypes.RATE;
                     default -> FieldTypes.NAME; //
-        };
+        };*/
+        FieldTypes type;
+        switch (s) {
+            case "name" :{ type = FieldTypes.NAME; break;}
+            case "price":{ type = FieldTypes.PRICE; break;}
+            case "rate" :{ type = FieldTypes.RATE; break;}
+            default :{ type = FieldTypes.NAME; break;}
+        }
         return type;
     }
+
     private SortingTypes parseSortingType(String s){
-        SortingTypes type =
+        /*SortingTypes type =
                 switch (s){
                     case "asc" -> SortingTypes.ASC;
                     case "desc" -> SortingTypes.DESC;
                     default -> SortingTypes.ASC;
-                };
+                };*/
+        SortingTypes type;
+        switch (s) {
+            case "asc" :{ type = SortingTypes.ASC; break;}
+            case "desc":{ type = SortingTypes.DESC; break;}
+            default :{ type = SortingTypes.ASC; break;}
+        }
         return type;
     }
 }
