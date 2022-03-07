@@ -19,11 +19,4 @@ public class StoreApp {
         p.parseConfig();
         UserInteractService.readUserCommands(store);
     }
-
-    void interract(){
-
-
-    }
-
-
 }
