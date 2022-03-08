@@ -67,15 +67,6 @@ public class UserInteractService {
         }
     }
 
-    /*private static StoreCommands parseCommand(String s){
-        StoreCommands command = switch (s){
-            case "top" -> StoreCommands.TOP;
-            case "sort"->StoreCommands.SORT;
-            case "quit"->StoreCommands.QUIT;
-            default -> StoreCommands.DEFAULT;
-        };
-        return command;
-    }*/
     static void readUserCommands(Store store, HashMap<FieldTypes, SortingTypes> sortingOrders){
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String userInput;
@@ -86,7 +77,9 @@ public class UserInteractService {
                 switch (userInput) {
                     case "top":{
                         if (top5ByPrice == null){
-                            top5ByPrice = Sorter.sortProductsFromStoreBy(FieldTypes.PRICE, SortingTypes.DESC, store.getCategoryList());
+                            //top5ByPrice = Sorter.sortProductsFromStoreBy(FieldTypes.RATE, SortingTypes.DESC, store.getCategoryList());
+                            var e = Map.entry(FieldTypes.RATE, SortingTypes.DESC);
+                            top5ByPrice = Sorter.mainSort( getListOfAllProductsFromStore_Debug(store), Map.ofEntries(e));
                         }
                         printProductsList(top5ByPrice.subList(0, min(5, top5ByPrice.size())));
                         break;

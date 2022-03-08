@@ -22,14 +22,16 @@ public class RandomStorePopulator {
         List<Product> productList = c.getProductList();
         for (int i = 0; i < randomAmountOfProducts; i++){
             //p= new Product(c.getCategoryName() + "_" + faker.commerce().productName()+"_" +i);
-            p= new Product(String.valueOf(i));
+            p= new Product(String.valueOf(i).toString());
             try {
                 //p.setPrice(nf.parse(faker.commerce().price(1, 100)).floatValue());
-               p.setPrice((float) 2*i);
+                //p.setPrice((float) 2*i);
+                p.setPrice((float)faker.number().numberBetween(1, 5));
             }
             catch (Exception e){};
             p.setRate((float)faker.number().randomDouble(2, 0, 5));
-            //p.setRate((float)(2.43));
+            //p.setRate((float)(2.43*i));
+            //p.setRate((float)faker.number().numberBetween(1, 5));
             productList.add(p);
         }
     }
