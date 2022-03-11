@@ -12,6 +12,7 @@ import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.lang.Math.min;
 
@@ -43,7 +44,7 @@ public class UserInteractService {
     private static List<Product> getListOfAllProductsFromStore_Debug(Store store){
         List<Product> l = new ArrayList<>();
         l.addAll(store.getCategoryList().stream().map( (categoryList)->{return categoryList.getProductList();})
-                .flatMap( (products) -> {return products.stream();}).toList());
+                .flatMap( (products) -> {return products.stream();}).collect(Collectors.toList()));
         return l;
     }
     static void printStore (Store s) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
@@ -80,6 +81,7 @@ public class UserInteractService {
                             //top5ByPrice = Sorter.sortProductsFromStoreBy(FieldTypes.RATE, SortingTypes.DESC, store.getCategoryList());
                             var e = Map.entry(FieldTypes.RATE, SortingTypes.DESC);
                             top5ByPrice = Sorter.mainSort( getListOfAllProductsFromStore_Debug(store), Map.ofEntries(e));
+                            //top5ByPrice = Sorter.mainSortStream( getListOfAllProductsFromStore_Debug(store), Map.ofEntries(e));
                         }
                         printProductsList(top5ByPrice.subList(0, min(5, top5ByPrice.size())));
                         break;
@@ -101,7 +103,5 @@ public class UserInteractService {
             }
         }
     catch (Exception e){};
-
     }
-
 }

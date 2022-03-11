@@ -9,7 +9,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URISyntaxException;
-import java.util.HashMap;
 
 public class StoreApp {
     public static void main(String[] args) throws NoSuchMethodException, IllegalAccessException,

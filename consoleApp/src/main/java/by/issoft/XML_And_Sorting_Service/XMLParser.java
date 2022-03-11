@@ -60,7 +60,7 @@ public class XMLParser {
         // java сломалась после применения автонастройки идеи
         // java: switch rules are not supported in -source 11
         //  (use -source 14 or higher to enable switch rules)
-        // хотя ВЕЗДЕ стоит 16
+        //
        /* FieldTypes type =
                 switch (s){
                     case "name" -> FieldTypes.NAME;

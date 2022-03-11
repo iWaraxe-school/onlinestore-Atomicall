@@ -10,12 +10,12 @@ import by.issoft.domain.Product;
 import java.util.*;
 
 public class Sorter {
-    public static List<Product> mainSort(List<Product> list, Map<FieldTypes, SortingTypes> sortingOrders){ /////// ???????????????????
-        /*Comparator<Product> comparator;
-        Map.Entry<FieldTypes, SortingTypes> mapPair;*/
-
-        /*var sortingOrdersElements = sortingOrders.entrySet();
+    public static List<Product> mainSort(List<Product> list, Map<FieldTypes, SortingTypes> sortingOrders){
+        Comparator<Product> comparator;
+        Map.Entry<FieldTypes, SortingTypes> mapPair;
+        var sortingOrdersElements = sortingOrders.entrySet();
         var iterator = sortingOrdersElements.iterator();
+
         try {
             mapPair = iterator.next();
         }
@@ -27,26 +27,21 @@ public class Sorter {
            mapPair = iterator.next();
            Comparator<Product> tmp = ProductComparator.getComparatorFor(mapPair.getKey(), mapPair.getValue()); // Comparators for others
            comparator = comparator.thenComparing(tmp);
-        }*/
-
-        Comparator<Product> productComparator = sortingOrders.entrySet().stream()
-                .map(entry -> ProductComparator.getComparatorFor(entry.getKey(), entry.getValue()))
-                .reduce(Comparator<Product>::thenComparing)
-                .orElse(new NameComparator());
-
-
+        }
         List<Product> finalList = new ArrayList<>(list);
-        finalList.sort(productComparator);
-
+        finalList.sort(comparator);
         return finalList;
     }
 
     public static List<Product> mainSortStream(List<Product> list, Map<FieldTypes, SortingTypes> sortingOrders) {
         List<Product> finalList = new ArrayList<>(list);
-
-
-
-
+        // как, если: BinaryOperator принимает (x, y) и возвращает результатом действие с ними
+        // но Compststor::thenComparing принимает только (другой компаратор)
+        Comparator<Product> productComparator = sortingOrders.entrySet().stream()
+                .map(entry -> ProductComparator.getComparatorFor(entry.getKey(), entry.getValue()))
+                .reduce(Comparator<Product>::thenComparing)
+                .orElse(new NameComparator());
+        finalList.sort(productComparator);
         return finalList;
     }
 
