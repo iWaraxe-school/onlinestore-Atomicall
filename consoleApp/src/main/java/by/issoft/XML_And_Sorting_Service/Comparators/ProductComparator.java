@@ -11,15 +11,15 @@ public class ProductComparator {
         Comparator<Product> c;
         switch (fieldType) {
             case NAME: {
-                c =  (sortingOrder==SortingTypes.ASC)? new NameAscComparator() : new NameDescComparator() ; break;
+                c =  (sortingOrder==SortingTypes.ASC)? new NameComparator() : new NameComparator().reversed(); break;
             }
             case PRICE: {
-                c =  (sortingOrder==SortingTypes.ASC)? new PriceAscComparator() : new PriceDescComparator() ; break;
+                c =  (sortingOrder==SortingTypes.ASC)? new PriceComparator() : new PriceComparator().reversed() ; break;
             }
             case RATE: {
-                c =  (sortingOrder==SortingTypes.ASC)? new RateAscComparator() : new RateDescComparator() ; break;
+                c =  (sortingOrder==SortingTypes.ASC)? new RateComparator() : new RateComparator().reversed() ; break;
             }
-            default :{ c = new NameAscComparator(); break;}
+            default :{ c = new NameComparator(); break;}
         }
         return c;
     }

@@ -4,16 +4,9 @@ import by.issoft.domain.Product;
 
 import java.util.Comparator;
 
-class NameAscComparator implements Comparator<Product> {
+public class NameComparator implements Comparator<Product> {
     @Override
     public int compare(Product o1, Product o2) {
         return o1.getName().compareTo(o2.getName());
-    }
-}
-
-class NameDescComparator implements Comparator<Product> {
-    @Override
-    public int compare(Product o1, Product o2) {
-        return o2.getName().compareTo(o1.getName());
     }
 }

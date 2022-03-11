@@ -19,7 +19,6 @@ public class StoreApp {
         store.populateCategories();
         UserInteractService.printStore(store);
         XMLParser p = new XMLParser("config.xml");
-        HashMap<FieldTypes, SortingTypes> sortingOrders =  p.parseConfig();
-        UserInteractService.readUserCommands(store, sortingOrders);
+        UserInteractService.readUserCommands(store, p.parseConfig());
     }
 }

@@ -43,7 +43,7 @@ public class XMLParser {
                 parse(configFile);
     }
 
-    public LinkedHashMap parseConfig() {
+    public LinkedHashMap<FieldTypes,SortingTypes> parseConfig() {
         Element rootElement = targetConfigXML.getDocumentElement();
         NodeList fieldsToSort = rootElement.getChildNodes();
         for (int i = 0; i < fieldsToSort.getLength(); i++) {
@@ -53,7 +53,7 @@ public class XMLParser {
             }
         }
         sortingOrders.forEach((key, val)->{System.out.println(key + " " + val);});
-        return (LinkedHashMap) sortingOrders;
+        return (LinkedHashMap<FieldTypes, SortingTypes>) sortingOrders;
     }
 
     private FieldTypes parseFieldType(String s){
