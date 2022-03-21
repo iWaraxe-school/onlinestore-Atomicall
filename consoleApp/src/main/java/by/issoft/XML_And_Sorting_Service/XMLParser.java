@@ -17,34 +17,42 @@ import java.io.IOException;
 
 import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Objects;
 
 
 public class XMLParser {
-    private Document targetConfigXML;
-    private Map<FieldTypes, SortingTypes> sortingOrders = new LinkedHashMap<FieldTypes,SortingTypes>();
-
+    private Map <File, Document> parsedDocuments = new HashMap<>();
+    private Document XMLToParse;
     public XMLParser(String path) throws InvalidPathException, NullPointerException,
             IOException, ParserConfigurationException, SAXException {
-        File configFile;
+        File XMLFile;
         try {
             Paths.get(path);
             ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-            //configFile = new File(classLoader.getResource("config/config.xml").getFile()); NPE
-            configFile = new File(classLoader.getResource(path).getFile());
-            if (!configFile.exists() | !configFile.isFile()) throw new FileNotFoundException();
+            //XMLFile = new File(classLoader.getResource("config/config.xml").getFile()); NPE
+            XMLFile = new File(Objects.requireNonNull(classLoader.getResource(path)).getFile());
+            if (!XMLFile.exists() | !XMLFile.isFile()) throw new FileNotFoundException();
         } catch (InvalidPathException | NullPointerException | FileNotFoundException ex) {
             System.out.println("Config path is not valid: " + path);
             throw ex;
         }
-        targetConfigXML = DocumentBuilderFactory.newInstance().
-                newDocumentBuilder().
-                parse(configFile);
+        if (parsedDocuments.containsKey(XMLFile)){
+            XMLToParse = parsedDocuments.get(XMLFile);
+        }
+        else {
+            XMLToParse = DocumentBuilderFactory.newInstance().
+                    newDocumentBuilder().
+                    parse(XMLFile);
+            parsedDocuments.put(XMLFile, XMLToParse);
+        }
     }
 
-    public LinkedHashMap<FieldTypes,SortingTypes> parseConfig() {
-        Element rootElement = targetConfigXML.getDocumentElement();
+    public LinkedHashMap<FieldTypes,SortingTypes> parseLatestConfig() {
+        Map<FieldTypes, SortingTypes> sortingOrders = new LinkedHashMap<FieldTypes,SortingTypes>();
+        Element rootElement = XMLToParse.getDocumentElement();
         NodeList fieldsToSort = rootElement.getChildNodes();
         for (int i = 0; i < fieldsToSort.getLength(); i++) {
             Node field = fieldsToSort.item(i);
@@ -57,17 +65,6 @@ public class XMLParser {
     }
 
     private FieldTypes parseFieldType(String s){
-        // java сломалась после применения автонастройки идеи
-        // java: switch rules are not supported in -source 11
-        //  (use -source 14 or higher to enable switch rules)
-        //
-       /* FieldTypes type =
-                switch (s){
-                    case "name" -> FieldTypes.NAME;
-                    case "price" -> FieldTypes.PRICE;
-                    case "rate" -> FieldTypes.RATE;
-                    default -> FieldTypes.NAME; //
-        };*/
         FieldTypes type;
         switch (s) {
             case "name" :{ type = FieldTypes.NAME; break;}
@@ -79,12 +76,6 @@ public class XMLParser {
     }
 
     private SortingTypes parseSortingType(String s){
-        /*SortingTypes type =
-                switch (s){
-                    case "asc" -> SortingTypes.ASC;
-                    case "desc" -> SortingTypes.DESC;
-                    default -> SortingTypes.ASC;
-                };*/
         SortingTypes type;
         switch (s) {
             case "asc" :{ type = SortingTypes.ASC; break;}

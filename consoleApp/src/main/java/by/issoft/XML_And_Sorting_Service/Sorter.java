@@ -1,5 +1,6 @@
 package by.issoft.XML_And_Sorting_Service;
 
+import by.issoft.XML_And_Sorting_Service.Comparators.ComparatorCreator;
 import by.issoft.XML_And_Sorting_Service.Comparators.NameComparator;
 import by.issoft.XML_And_Sorting_Service.Comparators.ProductComparator;
 import by.issoft.XML_And_Sorting_Service.Enums.FieldTypes;
@@ -23,6 +24,7 @@ public class Sorter {
             return new ArrayList<>();
         }
         comparator = ProductComparator.getComparatorFor(mapPair.getKey(), mapPair.getValue()); // get Comparator for first pair
+
         while (iterator.hasNext()) {
            mapPair = iterator.next();
            Comparator<Product> tmp = ProductComparator.getComparatorFor(mapPair.getKey(), mapPair.getValue()); // Comparators for others
@@ -46,7 +48,7 @@ public class Sorter {
     }
 
 
-    // Следующие 2 метода к удалению, но я бы их оставил
+  /*  // Следующие 2 метода к удалению, но я бы их оставил
     public static List<Product> sortProductsFromStoreBy(FieldTypes field, SortingTypes direction, List<Category> categoryList) {
         //getListOfProductsSortedBy
         List<Product> finalList = new ArrayList<>();
@@ -60,9 +62,9 @@ public class Sorter {
     private static List<Product> sortBy(FieldTypes fieldType, SortingTypes sortingOrder, List<Product> list){
         Comparator<Product> c = ProductComparator.getComparatorFor(fieldType, sortingOrder);
         Collections.sort(list, c);
-        /*if (sortingOrder == SortingTypes.DESC){
+        *//*if (sortingOrder == SortingTypes.DESC){
             Collections.reverse(list);
-        }*/
+        }*//*
         return list;
-    }
+    }*/
 }

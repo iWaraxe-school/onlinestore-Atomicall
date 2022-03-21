@@ -7,37 +7,20 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.Set;
 
-public class ReflectionsService {
+public class ReflectionsService { //Singleton
     private static ReflectionsService service = null;
     private final Reflections reflections;
-
-    public ReflectionsService(){
+    private ReflectionsService(){
         reflections = new Reflections("by.issoft.domain");
     }
-
-
-    public static  ReflectionsService getService (){
+    public static  ReflectionsService getService() {
         if (null == service){
             service = new ReflectionsService();
         }
         return service;
     }
 
-    public <T> Set<Class<? extends T>> getSubClasses (Class<T> c){ // casts??? Class<?> c
+    public <T> Set<Class<? extends T>> getSubClasses (Class<T> c){
         return (Set<Class<? extends T>>)reflections.getSubTypesOf(c);
     }
-
-    public <T> T createInstanceOf1(T c){
-        T instance = null;
-        try {
-            Constructor constructor = (Constructor) c.getClass().getMethod("getConstructor").invoke(c);
-            instance = (T) constructor.newInstance();
-
-        }
-        catch (Exception e){}
-        finally {
-            return instance;
-        }
-    }
-
 }
