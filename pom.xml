@@ -42,7 +42,19 @@
         <artifactId>slf4j-api</artifactId>
         <version>1.8.0-beta4</version>
     </dependency>-->
-</dependencies>
+
+
+                <dependency>
+                    <groupId>org.junit</groupId>
+                    <artifactId>junit-bom</artifactId>
+                    <version>RELEASE</version>
+                    <type>pom</type>
+                    <scope>import</scope>
+                </dependency>
+
+
+
+    </dependencies>
 
     <modules>
         <module>domain</module>

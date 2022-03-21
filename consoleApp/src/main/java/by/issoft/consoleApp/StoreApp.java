@@ -1,6 +1,4 @@
 package by.issoft.consoleApp;
-import by.issoft.XML_And_Sorting_Service.Enums.FieldTypes;
-import by.issoft.XML_And_Sorting_Service.Enums.SortingTypes;
 import by.issoft.store.Store;
 import by.issoft.XML_And_Sorting_Service.XMLParser;
 import org.xml.sax.SAXException;
@@ -18,6 +16,6 @@ public class StoreApp {
         store.populateCategories();
         UserInteractService.printStore(store);
         XMLParser p = new XMLParser("config.xml");
-        UserInteractService.readUserCommands(store, p.parseConfig());
+        UserInteractService.readUserCommands(store, p.parseLatestConfig());
     }
 }

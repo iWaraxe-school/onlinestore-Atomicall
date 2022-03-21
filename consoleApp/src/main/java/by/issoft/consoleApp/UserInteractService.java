@@ -78,10 +78,8 @@ public class UserInteractService {
                 switch (userInput) {
                     case "top":{
                         if (top5ByPrice == null){
-                            //top5ByPrice = Sorter.sortProductsFromStoreBy(FieldTypes.RATE, SortingTypes.DESC, store.getCategoryList());
                             var e = Map.entry(FieldTypes.RATE, SortingTypes.DESC);
                             top5ByPrice = Sorter.mainSort( getListOfAllProductsFromStore_Debug(store), Map.ofEntries(e));
-                            //top5ByPrice = Sorter.mainSortStream( getListOfAllProductsFromStore_Debug(store), Map.ofEntries(e));
                         }
                         printProductsList(top5ByPrice.subList(0, min(5, top5ByPrice.size())));
                         break;

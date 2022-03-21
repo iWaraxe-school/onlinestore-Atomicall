@@ -8,32 +8,25 @@ import java.util.List;
 import java.util.Locale;
 
 public class RandomStorePopulator {
-    static Faker faker = new Faker(Locale.ENGLISH);
+    private static Faker faker = new Faker(Locale.ENGLISH);
+    private static final int maxRandomAmountOfProducts = 10;
+    private static final int minRandomAmountOfProducts = 3;
+    private static final NumberFormat nf = NumberFormat.getInstance();
 
-    public RandomStorePopulator() {
-        System.out.println("Rand store populator created");
-    }
-    public static void populateCategory(Category c){
-        int maxRandVal = 10;
-        int minRandVal = 3;
-        NumberFormat nf = NumberFormat.getInstance();
-        int randomAmountOfProducts = (int)Math.floor(Math.random()*(maxRandVal-minRandVal+1)+minRandVal);
+    public static void populateCategory(Category c) {
         Product p;
         List<Product> productList = c.getProductList();
+        int randomAmountOfProducts = (int)Math.floor(Math.random()*
+                (maxRandomAmountOfProducts-minRandomAmountOfProducts+1)+minRandomAmountOfProducts);
+
         for (int i = 0; i < randomAmountOfProducts; i++){
-            //p= new Product(c.getCategoryName() + "_" + faker.commerce().productName()+"_" +i);
-            p= new Product(String.valueOf(i).toString());
+            p = new Product(c.getCategoryName() + "_" + faker.commerce().productName()+"_" +i);
             try {
-                //p.setPrice(nf.parse(faker.commerce().price(1, 100)).floatValue());
-                //p.setPrice((float) 2*i);
-                p.setPrice((float)faker.number().numberBetween(1, 5));
+                p.setPrice(nf.parse(faker.commerce().price(1, 100)).floatValue());
             }
             catch (Exception e){};
-            p.setRate((float)faker.number().randomDouble(2, 0, 5));
-            //p.setRate((float)(2.43*i));
-            //p.setRate((float)faker.number().numberBetween(1, 5));
+            p.setRate((float)faker.number().numberBetween(1, 5));
             productList.add(p);
         }
     }
-    //Faker
 }

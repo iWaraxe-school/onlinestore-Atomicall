@@ -1,8 +1,7 @@
 package by.issoft.domain;
 
 public class Product {
-    private final String name; // не лучше ли отнаследовавть product
-    // в конкретный продукт со своими критериями?
+    private final String name;
     private float rate;
     private float price;
 
