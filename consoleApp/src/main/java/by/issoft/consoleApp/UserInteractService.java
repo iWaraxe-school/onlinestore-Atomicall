@@ -41,11 +41,12 @@ public class UserInteractService {
         }
     }
 
-    private static List<Product> getListOfAllProductsFromStore_Debug(Store store){
-        List<Product> l = new ArrayList<>();
-        l.addAll(store.getCategoryList().stream().map( (categoryList)->{return categoryList.getProductList();})
+    private static List<Product> getListOfAllProductsFromStore(Store store){
+        List<Product> productList = new ArrayList<>();
+        productList.addAll(store.getCategoryList().stream()
+                .map( (categoryList)->{return categoryList.getProductList();})
                 .flatMap( (products) -> {return products.stream();}).collect(Collectors.toList()));
-        return l;
+        return productList;
     }
     static void printStore (Store s) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         if (s == null) return;
@@ -58,7 +59,10 @@ public class UserInteractService {
             str.append(method.invoke(s.getCategoryList().get(t))).append("\n");
             str.append(buildHeadString()).append("\n");
             subCategoryClass.getMethod("getProductList").invoke(s.getCategoryList().get(t));
-            List<Product> productList = (List<Product>) subCategoryClass.getMethod("getProductList").invoke(s.getCategoryList().get(t));
+            List<Product> productList = (List<Product>) subCategoryClass
+                    .getMethod("getProductList")
+                    .invoke(s.getCategoryList()
+                            .get(t));
             for (Product p: productList) {
                 buildProductString(p, str);
                 str.append("\n");
@@ -78,20 +82,20 @@ public class UserInteractService {
                 switch (userInput) {
                     case "top":{
                         if (top5ByPrice == null){
-                            var e = Map.entry(FieldTypes.RATE, SortingTypes.DESC);
-                            top5ByPrice = Sorter.mainSort( getListOfAllProductsFromStore_Debug(store), Map.ofEntries(e));
+                            var topSortingEntry = Map.entry(FieldTypes.RATE, SortingTypes.DESC);
+                            top5ByPrice = Sorter.mainSort( getListOfAllProductsFromStore(store), Map.ofEntries(topSortingEntry));
                         }
                         printProductsList(top5ByPrice.subList(0, min(5, top5ByPrice.size())));
                         break;
                     }
                     case "sort":{
-                        printProductsList(Sorter.mainSort(getListOfAllProductsFromStore_Debug(store), sortingOrders));
+                        printProductsList(Sorter.mainSort(getListOfAllProductsFromStore(store), sortingOrders));
                         System.out.println("__\n");
                         break;
                     }
                     case "quit":{
                         System.out.println("Leaving...");
-                        System.exit(0); //
+                        System.exit(0);
                         break;
                     }
                     default:{
