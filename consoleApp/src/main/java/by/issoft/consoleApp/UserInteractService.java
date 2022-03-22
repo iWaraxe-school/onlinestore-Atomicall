@@ -3,6 +3,7 @@ import by.issoft.XML_And_Sorting_Service.Enums.FieldTypes;
 import by.issoft.XML_And_Sorting_Service.Enums.SortingTypes;
 import by.issoft.XML_And_Sorting_Service.Sorter;
 import by.issoft.domain.Product;
+import by.issoft.store.ProductRecordBuilderString;
 import by.issoft.store.ReflectionsService;
 import by.issoft.store.Store;
 import by.issoft.domain.Category;
@@ -18,26 +19,15 @@ import static java.lang.Math.min;
 
 
 public class UserInteractService {
-
-    public static String buildProductString(Product p){
-        StringBuilder str = new StringBuilder();
-        str.append("\t");
-        str.append(String.format("%-50s",p.getName())).append("|");
-        str.append(String.format("%10s",p.getPrice())).append("|");
-        str.append((String.format("%10s",p.getRate()))).append("|");
-        return str.toString();
-    }
-    public static String buildProductString(Product p, StringBuilder str){
-       str.append(buildProductString(p));
-       return str.toString();
-    }
     public static String buildHeadString(){
         return String.format("\t%-50s|%-10s|%-10s%s", "ProductName", "Price", "Rate", "|");
     }
     public static void printProductsList( List<Product> list){
         System.out.println(buildHeadString());
         for (int i = 0; i < list.size(); i++) {
-            System.out.println(buildProductString(list.get(i)));
+            ProductRecordBuilderString productStringBuilder = new ProductRecordBuilderString(list.get(i));
+            productStringBuilder.build();
+            System.out.println(productStringBuilder.build());
         }
     }
 
@@ -64,7 +54,8 @@ public class UserInteractService {
                     .invoke(s.getCategoryList()
                             .get(t));
             for (Product p: productList) {
-                buildProductString(p, str);
+                ProductRecordBuilderString productStringBuilder = new ProductRecordBuilderString(p);
+                str.append(productStringBuilder.build());
                 str.append("\n");
             }
             System.out.println(str.toString());

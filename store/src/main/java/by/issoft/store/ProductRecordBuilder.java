@@ -1,4 +1,4 @@
-package by.issoft.consoleApp;
+package by.issoft.store;
 
 public interface ProductRecordBuilder {
     public ProductRecordBuilder setProductNameField (String name);
