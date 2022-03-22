@@ -11,7 +11,7 @@ import java.net.URISyntaxException;
 public class StoreApp {
     public static void main(String[] args) throws NoSuchMethodException, IllegalAccessException,
             InvocationTargetException, IOException, ParserConfigurationException, SAXException, URISyntaxException {
-        Store store = new Store();
+        Store store = Store.getInstance();
         store.init();
         store.populateCategories();
         UserInteractService.printStore(store);

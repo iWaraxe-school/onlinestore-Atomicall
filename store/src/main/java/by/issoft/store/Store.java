@@ -10,6 +10,16 @@ public class Store {
     public List<Category> getCategoryList() {
         return categoryList;
     }
+    private static Store store = null;
+
+    private Store () {};
+
+    public static Store getInstance(){
+        if (null == store){
+            store = new Store();
+        }
+        return store;
+    }
 
     public void init() {
         ReflectionsService reflectionsService = ReflectionsService.getService();
