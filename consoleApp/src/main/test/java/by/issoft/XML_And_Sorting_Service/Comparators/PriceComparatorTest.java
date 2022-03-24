@@ -9,8 +9,7 @@ import org.mockito.runners.*;
 import static org.junit.Assert.*;
 
 class PriceComparatorTest {
-    PriceComparator comparator = new PriceComparator();
-
+    PriceComparator comparator = new PriceComparator()
     @org.junit.jupiter.api.Test
     void compare() {
         float priceLarger = 500.2F;
