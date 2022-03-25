@@ -1,9 +1,9 @@
 package by.issoft.domain;
 
 public class Product {
-    private final String name;
-    private float rate;
-    private float price;
+    public String name;
+    public float rate;
+    public float price;
 
     public Product(String name, float rate, float price) {
         this.name = name;

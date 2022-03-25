@@ -37,4 +37,5 @@ public class Store {
             RandomStorePopulator.populateCategory(c);
         }
     }
+
 }
