@@ -7,16 +7,18 @@ public class ProductRecordString implements ProductRecord{
     public ProductRecordString() {
         stringBuilder = new StringBuilder();
     }
-    public StringBuilder getStringBuilder() {
+    /*public StringBuilder getStringBuilder() {
         return stringBuilder;
-    }
-
+    }*/
     void append(String what) {
         stringBuilder.append(what);
     }
-
     @Override
     public String toString() {
-        return stringBuilder.toString();
+        recordString = stringBuilder.toString();
+        return recordString;
+    }
+    public String getRecordString(){
+        return recordString;
     }
 }

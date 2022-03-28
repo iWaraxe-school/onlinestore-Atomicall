@@ -10,22 +10,18 @@ import by.issoft.domain.Product;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Comparator;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 class AscComparatorCreatorTest {
     AscComparatorCreator comparatorCreator = new AscComparatorCreator();
     @Test
     void getComparatorFor() {
-
-        MockitoAnnotations.initMocks(this);
-        Comparator<Product> t = Mockito.mock(NameComparator.class);
-
-
         Comparator<Product> comparator = new NameComparator();
         Assert.assertEquals(comparatorCreator.getComparatorFor(FieldTypes.NAME, SortingTypes.DESC).getClass(),
                 comparator.getClass());
