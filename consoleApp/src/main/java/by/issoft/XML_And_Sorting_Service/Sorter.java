@@ -46,25 +46,4 @@ public class Sorter {
         finalList.sort(productComparator);
         return finalList;
     }
-
-
-  /*  // Следующие 2 метода к удалению, но я бы их оставил
-    public static List<Product> sortProductsFromStoreBy(FieldTypes field, SortingTypes direction, List<Category> categoryList) {
-        //getListOfProductsSortedBy
-        List<Product> finalList = new ArrayList<>();
-        for (Category c : categoryList){
-            finalList.addAll(c.getProductList());
-        }
-        sortBy(field, direction, finalList);
-        return finalList;
-    }
-    //sortBy(FieldTypes, SortingTypes, List<Category>)' clashes with 'sortBy(FieldTypes, SortingTypes, List<Product>)'; both methods have same erasure Проблема со стиранием типов, как решить без переименования методов?
-    private static List<Product> sortBy(FieldTypes fieldType, SortingTypes sortingOrder, List<Product> list){
-        Comparator<Product> c = ProductComparator.getComparatorFor(fieldType, sortingOrder);
-        Collections.sort(list, c);
-        *//*if (sortingOrder == SortingTypes.DESC){
-            Collections.reverse(list);
-        }*//*
-        return list;
-    }*/
 }

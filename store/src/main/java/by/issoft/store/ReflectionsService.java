@@ -2,9 +2,6 @@ package by.issoft.store;
 
 
 import org.reflections.Reflections;
-
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
 import java.util.Set;
 
 public class ReflectionsService { //Singleton

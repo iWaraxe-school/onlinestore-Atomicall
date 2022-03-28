@@ -12,6 +12,14 @@
     <artifactId>consoleApp</artifactId>
     <build>
         <plugins>
+<!--            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>
+                    &#45;&#45;add-opens nodatafound.mockito_jpms_usecase/nodatafound.mjpmsuc=ALL-UNNAMED
+                </configuration>
+            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -43,8 +51,6 @@
             <artifactId>domain</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
-
 
     </dependencies>
 
