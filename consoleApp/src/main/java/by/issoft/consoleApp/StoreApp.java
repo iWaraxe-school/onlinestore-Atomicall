@@ -1,18 +1,21 @@
 package by.issoft.consoleApp;
 import by.issoft.store.Store;
+import by.issoft.XML_And_Sorting_Service.XMLParser;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URISyntaxException;
 
 public class StoreApp {
-    public static void main(String[] args) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        Store store = new Store();
+    public static void main(String[] args) throws NoSuchMethodException, IllegalAccessException,
+            InvocationTargetException, IOException, ParserConfigurationException, SAXException, URISyntaxException {
+        Store store = Store.getInstance();
         store.init();
         store.populateCategories();
-        try {
-            debugPrintService.printStore(store);
-        }
-        catch (Exception e){ throw e;}
+        UserInteractService.printStore(store);
+        XMLParser p = new XMLParser("config.xml");
+        UserInteractService.readUserCommands(store, p.parseLatestConfig());
     }
-
-
 }
