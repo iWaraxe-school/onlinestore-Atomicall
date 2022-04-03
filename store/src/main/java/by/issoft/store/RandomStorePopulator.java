@@ -9,8 +9,8 @@ import java.util.Locale;
 
 public class RandomStorePopulator {
     private static Faker faker = new Faker(Locale.ENGLISH);
-    private static final int maxRandomAmountOfProducts = 10;
-    private static final int minRandomAmountOfProducts = 3;
+    private static final int maxRandomAmountOfProducts = 40;
+    private static final int minRandomAmountOfProducts = 30;
     private static final NumberFormat nf = NumberFormat.getInstance();
 
     public static void populateCategory(Category c) {
