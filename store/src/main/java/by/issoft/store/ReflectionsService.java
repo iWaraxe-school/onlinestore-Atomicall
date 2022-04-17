@@ -10,6 +10,7 @@ public class ReflectionsService {
     private ReflectionsService(){
         reflections = new Reflections("by.issoft.domain");
     }
+
     public static  ReflectionsService getService() {
         if (null == service){
             service = new ReflectionsService();

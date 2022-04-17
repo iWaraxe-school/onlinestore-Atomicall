@@ -1,8 +1,6 @@
 package by.issoft.store;
 
 import by.issoft.domain.Product;
-
-import java.util.TimerTask;
 import java.util.concurrent.BlockingQueue;
 
 public class PurchasedProductsCleaner implements Runnable {

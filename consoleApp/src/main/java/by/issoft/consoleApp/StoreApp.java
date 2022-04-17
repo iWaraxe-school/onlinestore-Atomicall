@@ -1,6 +1,8 @@
 package by.issoft.consoleApp;
+import by.issoft.domain.Product;
 import by.issoft.store.Store;
 import by.issoft.XML_And_Sorting_Service.XMLParser;
+import by.issoft.store.database.StoreDB;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -13,6 +15,8 @@ public class StoreApp {
             InvocationTargetException, IOException, ParserConfigurationException, SAXException, URISyntaxException {
         Store store = Store.getInstance();
         store.init();
+        StoreDB.getStoreDB().initTables();
+
         store.populateCategories();
         UserInteractService.printStore(store);
         XMLParser p = new XMLParser("config.xml");

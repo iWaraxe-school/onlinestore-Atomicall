@@ -1,0 +1,63 @@
+2022-04-18 01:56:38 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-212]
+2022-04-18 01:56:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-212]
+2022-04-18 01:56:38 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-212]
+2022-04-18 01:57:48 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-212]
+2022-04-18 01:57:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-212]
+2022-04-18 01:57:48 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-212]
+2022-04-18 01:58:15 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-212]
+2022-04-18 01:58:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-212]
+2022-04-18 01:58:43 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-212]
+2022-04-18 01:58:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "BIKE_CATEGORY_PRODUCTS" уже существует
+Table "BIKE_CATEGORY_PRODUCTS" already exists; SQL statement:
+CREATE TABLE `bike_category_products` (
+`id` INT NOT NULL AUTO_INCREMENT,
+`product_name` VARCHAR(255) NOT NULL,
+`product_rate` FLOAT NOT NULL DEFAULT '0',
+`product_price` FLOAT NOT NULL DEFAULT '0', PRIMARY KEY (`id`)
+) [42101-212]
+2022-04-18 01:58:59 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "MILK_CATEGORY_PRODUCTS" уже существует
+Table "MILK_CATEGORY_PRODUCTS" already exists; SQL statement:
+CREATE TABLE `milk_category_products` (
+`id` INT NOT NULL AUTO_INCREMENT,
+`product_name` VARCHAR(255) NOT NULL,
+`product_rate` FLOAT NOT NULL DEFAULT '0',
+`product_price` FLOAT NOT NULL DEFAULT '0', PRIMARY KEY (`id`)
+) [42101-212]
+2022-04-18 01:58:59 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Таблица "PHONE_CATEGORY_PRODUCTS" уже существует
+Table "PHONE_CATEGORY_PRODUCTS" already exists; SQL statement:
+CREATE TABLE `phone_category_products` (
+`id` INT NOT NULL AUTO_INCREMENT,
+`product_name` VARCHAR(255) NOT NULL,
+`product_rate` FLOAT NOT NULL DEFAULT '0',
+`product_price` FLOAT NOT NULL DEFAULT '0', PRIMARY KEY (`id`)
+) [42101-212]
+2022-04-18 01:58:59 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-212]
+2022-04-18 01:58:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-212]
+2022-04-18 01:58:59 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-212]

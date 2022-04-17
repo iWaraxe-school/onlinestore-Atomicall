@@ -1,0 +1,205 @@
+[33mcommit a01128c7ad14f9c1702940fd3b93c00e4df3cd6f[m[33m ([m[1;36mHEAD -> [m[1;32m05patterns[m[33m, [m[1;31morigin/05patterns[m[33m)[m
+Author: Atomicall <60043149+Atomicall@users.noreply.github.com>
+Date:   Tue Mar 22 21:36:11 2022 +0300
+
+    Builder in progress
+
+[33mcommit 8c3cc63d817708661dca42411b16fa1b72b56f10[m
+Author: Atomicall <60043149+Atomicall@users.noreply.github.com>
+Date:   Tue Mar 22 16:02:28 2022 +0300
+
+    Store as Singleton done
+
+[33mcommit 78e5085e4438f039fe8652de6911a9a1282eeb49[m
+Author: Atomicall <60043149+Atomicall@users.noreply.github.com>
+Date:   Tue Mar 22 15:32:42 2022 +0300
+
+    Test framework import fixed
+
+[33mcommit 796689e9a7be956bc7779fc00ea17263535c351f[m
+Author: Atomicall <60043149+Atomicall@users.noreply.github.com>
+Date:   Mon Mar 21 11:12:49 2022 +0300
+
+    RandomStorePopulator Singleton and PrCompFactory
+
+[33mcommit 80712e02c483600e7ab4ec5cb9a66218b0112d9a[m[33m ([m[1;31morigin/04collection-sorting[m[33m, [m[1;32m05patterns_tests[m[33m, [m[1;32m04collection-sorting[m[33m)[m
+Author: Atomicall <60043149+Atomicall@users.noreply.github.com>
+Date:   Fri Mar 11 20:39:12 2022 +0300
+
+    Sorting fixed
+
+[33mcommit 1c6b2a7be86493f47dcb522acf6d3e1a72e7d925[m
+Author: Atomicall <60043149+Atomicall@users.noreply.github.com>
+Date:   Fri Mar 11 19:02:03 2022 +0300
+
+    Sorting fixed
+
+[33mcommit ba28446933c7eda53deda4b3708efcb4011ff27c[m
+Author: Atomicall <60043149+Atomicall@users.noreply.github.com>
+Date:   Wed Mar 9 02:39:46 2022 +0300
+
+    Problem with sorting
+
+[33mcommit 3b4b0b5b10816fa3ec0584c46ea4fe675b412f8a[m
+Author: Atomicall <60043149+Atomicall@users.noreply.github.com>
+Date:   Tue Mar 8 02:53:16 2022 +0300
+
+    Sorting in progress
+
+[33mcommit 27f34d6194c7aa92433accebc9597762a99ae8c1[m[33m ([m[1;31morigin/04collection-interaction[m[33m, [m[1;32m04collection-interaction[m[33m)[m
+Author: Atomicall <60043149+Atomicall@users.noreply.github.com>
+Date:   Mon Mar 7 03:37:25 2022 +0300
+
+    User interactoin in process
+
+[33mcommit 255a655e6afc79013a62f839b05ec3fc157faaae[m
+Author: Atomicall <60043149+Atomicall@users.noreply.github.com>
+Date:   Mon Mar 7 03:33:00 2022 +0300
+
+    User interactoin in process
+
+[33mcommit b56cf47a38250fa838056b74f0e5a8d73bf58ead[m[33m ([m[1;31morigin/04XML[m[33m, [m[1;32m04XML[m[33m)[m
+Merge: 8c82aaf 02288a3
+Author: Atomicall <60043149+Atomicall@users.noreply.github.com>
+Date:   Mon Mar 7 01:21:24 2022 +0300
+
+    Merge branch '04XML' of https://github.com/iWaraxe-school/onlinestore-Atomicall into 04XML
+
+[33mcommit 8c82aaff86a398f372215eb8a12034ffe518b717[m
+Author: Atomicall <60043149+Atomicall@users.noreply.github.com>
+Date:   Mon Mar 7 01:19:01 2022 +0300
+
+    XML Parser done
+
+[33mcommit 02288a38328b80c0351c940149fd1e5b24b16c6e[m
+Author: iWaraxe <80040226+iWaraxe@users.noreply.github.com>
+Date:   Mon Feb 21 11:23:38 2022 +0200
+
+    Update README.md
+    
+    VideoLecture links update
+
+[33mcommit a89e254436e3af43b76984ef1aa2d6c3faa89b8f[m
+Author: iWaraxe <80040226+iWaraxe@users.noreply.github.com>
+Date:   Mon Feb 21 09:50:05 2022 +0200
+
+    Update HINTS.md
+    
+    Hints & FAQs
+
+[33mcommit 499be89cf5903d5fae88104cae3cc9254d214419[m
+Author: iWaraxe <80040226+iWaraxe@users.noreply.github.com>
+Date:   Mon Feb 21 09:49:42 2022 +0200
+
+    Update README.md
+    
+    DeadLine по Task #4 Collections 05/03/2022
+
+[33mcommit da26ff2501b542bcb398707932207e7b589e317a[m
+Merge: e8c6ba4 545d31f
+Author: iWaraxe <80040226+iWaraxe@users.noreply.github.com>
+Date:   Mon Feb 21 09:49:13 2022 +0200
+
+    Merge pull request #5 from iWaraxe-school/03OOP
+    
+    03 oop
+
+[33mcommit 545d31fa7721331acc2a24b294cfb344a5080fb1[m[33m ([m[1;31morigin/03OOP[m[33m)[m
+Merge: eec02a5 06e873c
+Author: iWaraxe <80040226+iWaraxe@users.noreply.github.com>
+Date:   Mon Feb 21 09:48:53 2022 +0200
+
+    Merge pull request #4 from iWaraxe-school/03OOP_Reflections
+    
+    03 oop reflections
+
+[33mcommit 06e873ccc17ad0de5216890747961bbf1e4d71c9[m[33m ([m[1;31morigin/03OOP_Reflections[m[33m, [m[1;32m04Collections[m[33m, [m[1;32m03OOP_Reflections[m[33m)[m
+Author: Atomicall <60043149+Atomicall@users.noreply.github.com>
+Date:   Sun Feb 20 17:58:41 2022 +0300
+
+    Categories are adding by using reflections
+
+[33mcommit eec02a541f0d55c9f6ecb5c4180aa4c0c942605a[m
+Merge: 766b60c 13357b4
+Author: iWaraxe <80040226+iWaraxe@users.noreply.github.com>
+Date:   Fri Feb 18 02:52:17 2022 +0200
+
+    Merge pull request #3 from iWaraxe-school/03OOP_Faker
+    
+    Categories populated by Faker
+
+[33mcommit 1a6158e112b337a8d2da43587369c509ae122430[m
+Author: Atomicall <60043149+Atomicall@users.noreply.github.com>
+Date:   Thu Feb 17 18:39:19 2022 +0300
+
+    Store printing via Reflection
+
+[33mcommit 3da09634e4da2c72e528253007a75030d70aa42f[m
+Author: Atomicall <60043149+Atomicall@users.noreply.github.com>
+Date:   Thu Feb 17 02:20:42 2022 +0300
+
+    Reflections created
+
+[33mcommit 13357b413896be06845482f644f2b0f4d2a669e4[m[33m ([m[1;31morigin/03OOP_Faker[m[33m)[m
+Author: Atomicall <60043149+Atomicall@users.noreply.github.com>
+Date:   Thu Feb 17 01:00:58 2022 +0300
+
+    Categories populated by Faker
+
+[33mcommit 766b60c969a6c9c8d0f2ad6d135cb21bd365b8f5[m
+Merge: e8c6ba4 935dee8
+Author: iWaraxe <80040226+iWaraxe@users.noreply.github.com>
+Date:   Wed Feb 16 02:08:01 2022 +0200
+
+    Merge pull request #2 from iWaraxe-school/03OOP_domain
+    
+    03 oop domain
+
+[33mcommit 935dee8fa6c0ac91ab2ef9fcd6c1f4dd83907e81[m[33m ([m[1;31morigin/03OOP_domain[m[33m)[m
+Author: Atomicall <60043149+Atomicall@users.noreply.github.com>
+Date:   Sun Feb 13 02:30:26 2022 +0300
+
+    Common classes created
+
+[33mcommit 9184d3eaec613a3837aa3db868e285d453a0b690[m
+Author: Atomicall <60043149+Atomicall@users.noreply.github.com>
+Date:   Sun Feb 13 02:26:13 2022 +0300
+
+    Common classes created
+
+[33mcommit e8c6ba47ca7548763f5deb208b27e86134d3d946[m[33m ([m[1;32mmain[m[33m)[m
+Author: iWaraxe <80040226+iWaraxe@users.noreply.github.com>
+Date:   Thu Feb 10 14:26:12 2022 +0200
+
+    Create HINTS.md
+    
+    Hints & FAQs
+
+[33mcommit 7a584b0aadab0cba217d158e6d149574a2aca4a4[m
+Author: iWaraxe <80040226+iWaraxe@users.noreply.github.com>
+Date:   Thu Feb 10 14:25:34 2022 +0200
+
+    Update README.md
+    
+    Task #3 OOP
+
+[33mcommit 97720e8cee31c7f3da4c8d65400f5550fb4b6b85[m
+Merge: 56fbab3 7ad207e
+Author: iWaraxe <80040226+iWaraxe@users.noreply.github.com>
+Date:   Thu Feb 10 14:24:50 2022 +0200
+
+    Merge pull request #1 from iWaraxe-school/02maven
+    
+    Multimodule project created
+
+[33mcommit 7ad207e92b810c7fe812fce3772c0cb9ab2d8d48[m[33m ([m[1;31morigin/02maven[m[33m)[m
+Author: Atomicall <60043149+Atomicall@users.noreply.github.com>
+Date:   Thu Feb 10 00:09:13 2022 +0300
+
+    Multimodule project created
+
+[33mcommit 56fbab3a554a421c00c46ff1157f7dcb6cd69ea7[m
+Author: github-classroom[bot] <66690702+github-classroom[bot]@users.noreply.github.com>
+Date:   Mon Feb 7 16:30:50 2022 +0000
+
+    Initial commit
