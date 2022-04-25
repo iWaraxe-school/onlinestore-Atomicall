@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Category {
     private final String categoryName;
-    private List<Product> productList = new ArrayList<>();
+    private final List<Product> productList = new ArrayList<>();
 
     public Category(String categoryName) {
         this.categoryName = categoryName;
