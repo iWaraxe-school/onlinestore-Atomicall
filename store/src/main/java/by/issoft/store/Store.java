@@ -43,42 +43,26 @@ public class Store {
         startPurchasedProductsCleaner(TimeUnit.SECONDS.toMillis(purchasedProductsQueueCleaningPeriodSeconds));
     }
 
-    public void populateCategories(){
+    public void populateCategories(StoreDB db){
         if (categoryList.isEmpty()) return;
-       /* // Можно было бы переписать вызов метода по имени категории через рефлексию
-        Category c = categoryList.get(0);
-        RandomStorePopulator.populateCategory(c);
-        for (Product pr: c.getProductList()) {
-                if (!StoreDB.getStoreDB().getPhoneCategoryDB().insertProduct(pr)){
-                    System.out.println("Failed to insert " + pr);
-                }
-        }
-        c = categoryList.get(1);
-        RandomStorePopulator.populateCategory(c);
-        for (Product pr: c.getProductList()) {
-            if (!StoreDB.getStoreDB().getBikeCategoryDB().insertProduct(pr)){
-                System.out.println("Failed to insert " + pr);
-            }
-        }
-        c = categoryList.get(2);
-        RandomStorePopulator.populateCategory(c);
-        for (Product pr: c.getProductList()) {
-            if (!StoreDB.getStoreDB().getMilkCategoryDB().insertProduct(pr)){
-                System.out.println("Failed to insert " + pr);
-            }
-        }*/
         Category c = categoryList.get(0);
         c.getProductList().addAll(
-                StoreDB.getStoreDB().getPhoneCategoryDB().getListOfProducts()
+                db.getPhoneCategoryDB().getListOfProducts()
         );
         c = categoryList.get(1);
         c.getProductList().addAll(
-                StoreDB.getStoreDB().getBikeCategoryDB().getListOfProducts()
+                db.getBikeCategoryDB().getListOfProducts()
         );
         c = categoryList.get(2);
         c.getProductList().addAll(
-                StoreDB.getStoreDB().getMilkCategoryDB().getListOfProducts()
+               db.getMilkCategoryDB().getListOfProducts()
         );
+    }
+
+    public void populateCategories(List<Category> categoryListFromDB){
+        if (categoryListFromDB.isEmpty()) return;
+        categoryList.addAll(categoryListFromDB); // ?
+
     }
 
     public List<Category> getCategoryList() {

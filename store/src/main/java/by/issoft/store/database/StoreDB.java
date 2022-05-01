@@ -55,6 +55,7 @@ public class StoreDB {
     public static StoreDB getStoreDB(){
         if (null == storeDB){
             storeDB = new StoreDB();
+            storeDB.initTables();
         }
         return storeDB;
     }

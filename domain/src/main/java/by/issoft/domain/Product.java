@@ -1,18 +1,13 @@
 package by.issoft.domain;
 
-public class Product {
+import java.io.Serializable;
 
-    private long id;
+public class Product implements Serializable {
+
+    private transient long id;
     private String name;
     private float rate;
     private float price;
-
-    //del
-    public Product(String name, float rate, float price) {
-        this.name = name;
-        this.rate = rate;
-        this.price = price;
-    }
 
     public Product(long id, String name, float rate, float price) {
         this.id = id;
