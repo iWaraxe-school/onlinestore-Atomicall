@@ -1,15 +1,23 @@
 package by.issoft.domain;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
+
 
 public class Product implements Serializable {
 
-    private transient long id;
+    private long id;
     private String name;
     private float rate;
     private float price;
 
-    public Product(long id, String name, float rate, float price) {
+    @JsonCreator
+    public Product(@JsonProperty("id") long id,
+                   @JsonProperty("name") String name,
+                   @JsonProperty("rate") float rate,
+                   @JsonProperty("price") float price) {
         this.id = id;
         this.name = name;
         this.rate = rate;

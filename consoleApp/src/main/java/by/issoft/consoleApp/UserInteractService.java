@@ -8,6 +8,7 @@ import by.issoft.store.ProductRecordBuilderString;
 import by.issoft.store.ReflectionsService;
 import by.issoft.store.Store;
 import by.issoft.domain.Category;
+import by.issoft.store.http_client.HTTPClientWrapper;
 
 
 import java.io.BufferedReader;
@@ -22,7 +23,7 @@ import static java.lang.Math.min;
 
 public class UserInteractService {
     public static String buildHeadString(){
-        return String.format("\t%-50s|%-10s|%-10s%s", "ProductName", "Price", "Rate", "|");
+        return String.format("\t%-50s|%-10s|%-10s|%-10s%s", "ProductName", "Price", "Rate", "ID", "|");
     }
     public static void printProductsList( List<Product> list){
         System.out.println(buildHeadString());
@@ -31,7 +32,6 @@ public class UserInteractService {
             System.out.println(productStringBuilder.build());
         }
     }
-
     private static List<Product> getListOfAllProductsFromStore(Store store){
         List<Product> productList = new ArrayList<>();
         productList.addAll(store.getCategoryList().stream()
@@ -69,11 +69,12 @@ public class UserInteractService {
                 sort (alias - s)- sort according config.xml
                 create order (alias - cr)
                 help (alias - h) - get commands
+                addToCart (alias - ac) - add product to cart
+                requestFromCart (alias -rc) - request cart from server 
                 quit (alias - q)
                 """;
         return commands;
     }
-
     private static void createOrder(Store store){
         List<Product> allProducts = getListOfAllProductsFromStore(store);
         int randomInt = (int)Math.floor(Math.random()* (30)+ 1);
@@ -84,11 +85,21 @@ public class UserInteractService {
                 randomInt, allProducts.get(randomInt).getName(), System.currentTimeMillis());
         thread.start();
     }
+    private static void addToCart(){
 
-    static void readUserCommands(Store store, HashMap<FieldTypes, SortingTypes> sortingOrders){
+    }
+    private static String requestFromCart(){
+
+        return null;
+    }
+
+    private static HTTPClientWrapper clientWrapper;
+
+    static void readUserCommands(Store store, HashMap<FieldTypes, SortingTypes> sortingOrders, HTTPClientWrapper httpClientWrapper){
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String userInput;
         List<Product> top5ByPrice = null;
+        clientWrapper = httpClientWrapper;
         try {
             while (true) {
                 userInput = reader.readLine();
@@ -124,6 +135,16 @@ public class UserInteractService {
                     case "create order":
                     case "cr": {
                         createOrder(store);
+                        break;
+                    }
+                    case "addToCart":
+                    case "ac":{
+
+                        break;
+                    }
+                    case "requestFromCart":
+                    case "rc":{
+
                         break;
                     }
                     default:{

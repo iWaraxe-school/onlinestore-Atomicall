@@ -1,5 +1,6 @@
 package by.issoft.store.http_sever.server;
 
+import by.issoft.store.http_sever.server.Handlers.AddToCartHander;
 import by.issoft.store.http_sever.server.Handlers.LoadDataFromDBHandler;
 import by.issoft.store.http_sever.server.Handlers.MainHandler;
 import com.sun.net.httpserver.*;
@@ -31,7 +32,9 @@ public class HTTPServerWrapper {
 
     public void startServer(){
         HttpHandler MainHandler;
-        httpServer.createContext("/", new LoadDataFromDBHandler());
+        httpServer.createContext("/getAllCategories", new LoadDataFromDBHandler());
+        httpServer.createContext("/", new MainHandler());
+        httpServer.createContext("/addToCart", new AddToCartHander());
         httpServer.start();
     }
 
