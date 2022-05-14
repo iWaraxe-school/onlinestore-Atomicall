@@ -25,6 +25,7 @@ public class HTTPServerWrapper {
         try {
             httpServer = HttpServer.create(new InetSocketAddress(port), 0);
             httpServer.setExecutor(Executors.newCachedThreadPool());
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -32,9 +33,18 @@ public class HTTPServerWrapper {
 
     public void startServer(){
         HttpHandler MainHandler;
-        httpServer.createContext("/getAllCategories", new LoadDataFromDBHandler());
+        BasicAuthenticator authenticator = new BasicAuthenticator("get") {
+            @Override
+            public boolean checkCredentials(String user, String pwd) {
+                return user.equals("login") && pwd.equals("pass");
+            }
+        };
+
+        httpServer.createContext("/getAllCategories", new LoadDataFromDBHandler())
+        .setAuthenticator(authenticator);
         httpServer.createContext("/", new MainHandler());
-        httpServer.createContext("/addToCart", new AddToCartHander());
+        httpServer.createContext("/addToCart", new AddToCartHander())
+        .setAuthenticator(authenticator);
         httpServer.start();
     }
 

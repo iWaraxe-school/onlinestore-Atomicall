@@ -70,7 +70,6 @@ public class UserInteractService {
                 create order (alias - cr)
                 help (alias - h) - get commands
                 addToCart (alias - ac) - add product to cart
-                requestFromCart (alias -rc) - request cart from server 
                 quit (alias - q)
                 """;
         return commands;
@@ -78,6 +77,10 @@ public class UserInteractService {
     private static void createOrder(Store store){
         List<Product> allProducts = getListOfAllProductsFromStore(store);
         int randomInt = (int)Math.floor(Math.random()* (30)+ 1);
+        if (allProducts == null || allProducts.isEmpty()){
+            System.out.println("Failed to create order: productsList is empty");
+            return;
+        }
         Thread thread = new Thread(new OrderRunner(allProducts.get(randomInt),
                 randomInt,
                 store.getPurchasedProducts()));
@@ -86,7 +89,10 @@ public class UserInteractService {
         thread.start();
     }
     private static void addToCart(){
-
+        Random r = new Random();
+        int categoryIndex = r.nextInt(3);
+        int productIndex = r.nextInt(_store.getCategoryList().get(categoryIndex).getProductList().size());
+        clientWrapper.addToCart(_store.getCategoryList().get(categoryIndex).getProductList().get(productIndex));
     }
     private static String requestFromCart(){
 
@@ -94,9 +100,11 @@ public class UserInteractService {
     }
 
     private static HTTPClientWrapper clientWrapper;
+    private static Store _store;
 
     static void readUserCommands(Store store, HashMap<FieldTypes, SortingTypes> sortingOrders, HTTPClientWrapper httpClientWrapper){
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        _store = store;
         String userInput;
         List<Product> top5ByPrice = null;
         clientWrapper = httpClientWrapper;
@@ -139,12 +147,7 @@ public class UserInteractService {
                     }
                     case "addToCart":
                     case "ac":{
-
-                        break;
-                    }
-                    case "requestFromCart":
-                    case "rc":{
-
+                        addToCart();
                         break;
                     }
                     default:{
@@ -153,6 +156,8 @@ public class UserInteractService {
                 }
             }
         }
-    catch (Exception e){};
+    catch (Exception e){
+            e.printStackTrace();
+    };
     }
 }

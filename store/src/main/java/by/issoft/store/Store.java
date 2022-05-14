@@ -60,7 +60,7 @@ public class Store {
     }
 
     public void populateCategories(List<List<Product>> listOfPopulatedProductLists){
-        if (listOfPopulatedProductLists.isEmpty()) return;
+        if (listOfPopulatedProductLists == null || listOfPopulatedProductLists.isEmpty() ) return;
         categoryList.get(0).getProductList().addAll(listOfPopulatedProductLists.get(0));
         categoryList.get(1).getProductList().addAll(listOfPopulatedProductLists.get(1));
         categoryList.get(2).getProductList().addAll(listOfPopulatedProductLists.get(2));

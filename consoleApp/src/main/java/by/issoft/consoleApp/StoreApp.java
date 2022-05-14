@@ -21,6 +21,11 @@ public class StoreApp {
         store.populateCategories(clientWrapper.requestDataFromDB());
         UserInteractService.printStore(store);
         XMLParser p = new XMLParser("config.xml");
-        UserInteractService.readUserCommands(store, p.parseLatestConfig(), clientWrapper);
+        try {
+            UserInteractService.readUserCommands(store, p.parseLatestConfig(), clientWrapper);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
