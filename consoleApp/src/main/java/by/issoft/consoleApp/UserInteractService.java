@@ -8,6 +8,7 @@ import by.issoft.store.ProductRecordBuilderString;
 import by.issoft.store.ReflectionsService;
 import by.issoft.store.Store;
 import by.issoft.domain.Category;
+import by.issoft.store.http_client.HTTPClientWrapper;
 
 
 import java.io.BufferedReader;
@@ -22,7 +23,7 @@ import static java.lang.Math.min;
 
 public class UserInteractService {
     public static String buildHeadString(){
-        return String.format("\t%-50s|%-10s|%-10s%s", "ProductName", "Price", "Rate", "|");
+        return String.format("\t%-50s|%-10s|%-10s|%-10s%s", "ProductName", "Price", "Rate", "ID", "|");
     }
     public static void printProductsList( List<Product> list){
         System.out.println(buildHeadString());
@@ -31,7 +32,6 @@ public class UserInteractService {
             System.out.println(productStringBuilder.build());
         }
     }
-
     private static List<Product> getListOfAllProductsFromStore(Store store){
         List<Product> productList = new ArrayList<>();
         productList.addAll(store.getCategoryList().stream()
@@ -69,14 +69,18 @@ public class UserInteractService {
                 sort (alias - s)- sort according config.xml
                 create order (alias - cr)
                 help (alias - h) - get commands
+                addToCart (alias - ac) - add product to cart
                 quit (alias - q)
                 """;
         return commands;
     }
-
     private static void createOrder(Store store){
         List<Product> allProducts = getListOfAllProductsFromStore(store);
         int randomInt = (int)Math.floor(Math.random()* (30)+ 1);
+        if (allProducts == null || allProducts.isEmpty()){
+            System.out.println("Failed to create order: productsList is empty");
+            return;
+        }
         Thread thread = new Thread(new OrderRunner(allProducts.get(randomInt),
                 randomInt,
                 store.getPurchasedProducts()));
@@ -84,11 +88,26 @@ public class UserInteractService {
                 randomInt, allProducts.get(randomInt).getName(), System.currentTimeMillis());
         thread.start();
     }
+    private static void addToCart(){
+        Random r = new Random();
+        int categoryIndex = r.nextInt(3);
+        int productIndex = r.nextInt(_store.getCategoryList().get(categoryIndex).getProductList().size());
+        clientWrapper.addToCart(_store.getCategoryList().get(categoryIndex).getProductList().get(productIndex));
+    }
+    private static String requestFromCart(){
 
-    static void readUserCommands(Store store, HashMap<FieldTypes, SortingTypes> sortingOrders){
+        return null;
+    }
+
+    private static HTTPClientWrapper clientWrapper;
+    private static Store _store;
+
+    static void readUserCommands(Store store, HashMap<FieldTypes, SortingTypes> sortingOrders, HTTPClientWrapper httpClientWrapper){
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        _store = store;
         String userInput;
         List<Product> top5ByPrice = null;
+        clientWrapper = httpClientWrapper;
         try {
             while (true) {
                 userInput = reader.readLine();
@@ -126,12 +145,19 @@ public class UserInteractService {
                         createOrder(store);
                         break;
                     }
+                    case "addToCart":
+                    case "ac":{
+                        addToCart();
+                        break;
+                    }
                     default:{
                         System.out.println("Unknown command");
                     }
                 }
             }
         }
-    catch (Exception e){};
+    catch (Exception e){
+            e.printStackTrace();
+    };
     }
 }

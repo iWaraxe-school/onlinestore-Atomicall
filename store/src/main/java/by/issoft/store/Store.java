@@ -59,10 +59,11 @@ public class Store {
         );
     }
 
-    public void populateCategories(List<Category> categoryListFromDB){
-        if (categoryListFromDB.isEmpty()) return;
-        categoryList.addAll(categoryListFromDB); // ?
-
+    public void populateCategories(List<List<Product>> listOfPopulatedProductLists){
+        if (listOfPopulatedProductLists == null || listOfPopulatedProductLists.isEmpty() ) return;
+        categoryList.get(0).getProductList().addAll(listOfPopulatedProductLists.get(0));
+        categoryList.get(1).getProductList().addAll(listOfPopulatedProductLists.get(1));
+        categoryList.get(2).getProductList().addAll(listOfPopulatedProductLists.get(2));
     }
 
     public List<Category> getCategoryList() {

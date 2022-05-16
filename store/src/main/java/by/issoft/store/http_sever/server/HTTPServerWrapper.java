@@ -1,5 +1,6 @@
 package by.issoft.store.http_sever.server;
 
+import by.issoft.store.http_sever.server.Handlers.AddToCartHander;
 import by.issoft.store.http_sever.server.Handlers.LoadDataFromDBHandler;
 import by.issoft.store.http_sever.server.Handlers.MainHandler;
 import com.sun.net.httpserver.*;
@@ -24,6 +25,7 @@ public class HTTPServerWrapper {
         try {
             httpServer = HttpServer.create(new InetSocketAddress(port), 0);
             httpServer.setExecutor(Executors.newCachedThreadPool());
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -31,7 +33,18 @@ public class HTTPServerWrapper {
 
     public void startServer(){
         HttpHandler MainHandler;
-        httpServer.createContext("/", new LoadDataFromDBHandler());
+        BasicAuthenticator authenticator = new BasicAuthenticator("get") {
+            @Override
+            public boolean checkCredentials(String user, String pwd) {
+                return user.equals("login") && pwd.equals("pass");
+            }
+        };
+
+        httpServer.createContext("/getAllCategories", new LoadDataFromDBHandler())
+        .setAuthenticator(authenticator);
+        httpServer.createContext("/", new MainHandler());
+        httpServer.createContext("/addToCart", new AddToCartHander())
+        .setAuthenticator(authenticator);
         httpServer.start();
     }
 

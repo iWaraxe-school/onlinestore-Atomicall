@@ -7,12 +7,14 @@ public class ProductRecordBuilderString implements ProductRecordBuilder{
     private String name;
     private float rate;
     private float price;
+    private long id;
     private boolean ready = false;
 
     public ProductRecordBuilderString(Product product) {
         this.name = product.getName();
         this.rate = product.getRate();
         this.price = product.getPrice();
+        this.id = product.getId();
     }
 
     @Override
@@ -42,6 +44,8 @@ public class ProductRecordBuilderString implements ProductRecordBuilder{
         stringRecord.append(String.format("%10s",price));
         stringRecord.append("|");
         stringRecord.append((String.format("%10s",rate)));
+        stringRecord.append("|");
+        stringRecord.append((String.format("%10s",id)));
         stringRecord.append("|");
         ready = true;
         return  stringRecord;
